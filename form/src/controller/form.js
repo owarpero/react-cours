@@ -7,22 +7,19 @@ export default class FormToAdd extends React.Component {
     this.state = {
       name: "",
       select: "Cleaner",
-      radioGroup: {
-        no: true,
-        yes: false
-      }
+      contractor: false
     };
     this.onSubmit = this.onSubmit.bind(this);
-    this.handelRadio = this.handelRadio.bind(this);
-    this.handelChange = this.handelChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
-  handelRadio(e) {
-    let object = {};
-    object[e.target.value] = e.target.checked;
-    this.setState({ radioGroup: object });
-  }
-  handelChange(e) {
-    this.setState({ [e.target.name]: e.target.value });
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
   onSubmit(e) {
     this.props.newWorker(this.state);
@@ -33,8 +30,7 @@ export default class FormToAdd extends React.Component {
     return (
       <div>
         <Form
-          handelRadio={this.handelRadio}
-          handelChange={this.handelChange}
+          handleInputChange={this.handleInputChange}
           state={this.state}
           onSubmit={this.onSubmit}
         />

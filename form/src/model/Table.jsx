@@ -1,27 +1,24 @@
 import React from "react";
+
 export default function Table(props) {
-    const tableItems = props.state.people.map((item, index) =>
-    <div key = {index}>
+    const tableItems = props.state.people.map((item) =>
+    <tr key = {item.id}>
         <th>{item.name}</th>
         <th>{item.select}</th>
-        <th>{ item.radioGroup.no ? "-": item.radioGroup.yes ? '+': null }</th>
-    </div>
+        <th>{item.contractor ? "+":  '-'}</th>
+    </tr>
   );
-    return <div>
-    <table>
-    <tbody>
-    <tr>
-        <div>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Contractor?</th>
-        </div>
-        
-    </tr>
-    <tr>
-    {tableItems}
-    </tr>
-    </tbody>
-    </table>
-    </div>
+    return (
+    <div>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Contractor?</th>
+                </tr>
+                    {tableItems}
+            </tbody>
+        </table>
+    </div>)
 }
