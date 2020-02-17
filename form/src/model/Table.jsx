@@ -6,6 +6,10 @@ export default function Table(props) {
         <th>{item.name}</th>
         <th>{item.select}</th>
         <th>{item.contractor ? "+":  '-'}</th>
+        <th>
+            <input type="button" value="X" onClick={item.deleteItem}/>
+            <input type="button" value="Edit" onClick={item.editItem}/>
+        </th>
     </tr>
   );
     return (
@@ -16,8 +20,9 @@ export default function Table(props) {
                     <th>Name</th>
                     <th>Position</th>
                     <th>Contractor?</th>
+                    <th></th>
                 </tr>
-                    {tableItems}
+                {tableItems}
             </tbody>
         </table>
     </div>)
