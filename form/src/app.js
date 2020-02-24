@@ -1,6 +1,6 @@
 import React from "react";
-import Table from "./model/Table";
-import Form from "./controller/form";
+import Table from "./table/Table.jsx";
+import Form from "./form/form";
 
 class App extends React.Component {
   constructor(props) {
@@ -10,10 +10,11 @@ class App extends React.Component {
       people: [],
       valueToEdit: {
         name: "",
-        select: "Cleaner",
+        select: "junior",
         contractor: false,
         id: null,
-        submitValue: "Add"
+        submitValue: "Add",
+        disabled: true
       }
     };
     this.findById = this.findById.bind(this);
