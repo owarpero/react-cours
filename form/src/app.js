@@ -17,29 +17,26 @@ class App extends React.Component {
         disabled: true
       }
     };
-    this.findById = this.findById.bind(this);
-    this.newWorker = this.newWorker.bind(this);
-    this.deleteItem = this.deleteItem.bind(this);
   }
-  newWorker(parentState) {
+  newWorker = parentState => {
     let newValue = this.state.people;
     parentState.deleteItem = this.deleteItem.bind(this, parentState.id);
     newValue.push(parentState);
     this.setState({ people: newValue });
-  }
-  findById(id) {
+  };
+  findById = id => {
     let indexOfEl = null;
     this.state.people.forEach((item, index) =>
       id === item.id ? (indexOfEl = index) : null
     );
     return indexOfEl;
-  }
+  };
 
-  deleteItem(id) {
+  deleteItem = id => {
     let state = this.state.people;
     state.splice(this.findById(id), 1);
     this.setState({ people: state });
-  }
+  };
 
   render() {
     return (
